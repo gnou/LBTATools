@@ -111,8 +111,10 @@ open class LBTAListHeaderFooterController<T: LBTAListCell<U>, U, H: UICollection
         super.init(collectionViewLayout: layout)
     }
 
-    public convenience init(scrollDirection: UICollectionView.ScrollDirection = .vertical) {
-        self.init(layout: UICollectionViewFlowLayout(), scrollDirection: scrollDirection)
+    public init(scrollDirection: UICollectionView.ScrollDirection = .vertical) {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = scrollDirection
+        super.init(collectionViewLayout: layout)
     }
     
     required public init?(coder aDecoder: NSCoder) {
