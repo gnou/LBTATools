@@ -27,7 +27,7 @@ open class LBTAFormController: UIViewController {
         return sv
     }()
     
-    fileprivate let alignment: FormAlignment
+    private let alignment: FormAlignment
     
     public init(alignment: FormAlignment = .top) {
         self.alignment = alignment
