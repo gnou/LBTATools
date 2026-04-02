@@ -32,8 +32,8 @@ open class LBTAListHeaderFooterController<T: LBTAListCell<U>, U, H: UICollection
         }
     }
     
-    fileprivate let cellId = "cellId"
-    fileprivate let supplementaryViewId = "supplementaryViewId"
+    let cellId = "cellId"
+    let supplementaryViewId = "supplementaryViewId"
     
     /// Return an estimated height for proper indexPath using systemLayoutSizeFitting.
     open func estimatedCellHeight(for indexPath: IndexPath, cellWidth: CGFloat) -> CGFloat {
@@ -104,11 +104,15 @@ open class LBTAListHeaderFooterController<T: LBTAListCell<U>, U, H: UICollection
      
      */
     
-    public init(layout: UICollectionViewLayout = UICollectionViewFlowLayout(), scrollDirection: UICollectionView.ScrollDirection = .vertical) {
+    public init(layout: UICollectionViewLayout, scrollDirection: UICollectionView.ScrollDirection = .vertical) {
         if let layout = layout as? UICollectionViewFlowLayout {
             layout.scrollDirection = scrollDirection
         }
         super.init(collectionViewLayout: layout)
+    }
+
+    public convenience init(scrollDirection: UICollectionView.ScrollDirection = .vertical) {
+        self.init(layout: UICollectionViewFlowLayout(), scrollDirection: scrollDirection)
     }
     
     required public init?(coder aDecoder: NSCoder) {
