@@ -32,8 +32,8 @@ open class LBTAListHeaderFooterController<T: LBTAListCell<U>, U, H: UICollection
         }
     }
     
-    let cellId = "cellId"
-    let supplementaryViewId = "supplementaryViewId"
+    public let cellId = "cellId"
+    public let supplementaryViewId = "supplementaryViewId"
     
     /// Return an estimated height for proper indexPath using systemLayoutSizeFitting.
     open func estimatedCellHeight(for indexPath: IndexPath, cellWidth: CGFloat) -> CGFloat {

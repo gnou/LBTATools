@@ -11,7 +11,7 @@ import UIKit
 @available(iOS 11.0, *)
 open class LBTAFormController: UIViewController {
     
-    var lowestElement: UIView!
+    open var lowestElement: UIView!
     public lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.contentInsetAdjustmentBehavior = .never
@@ -65,9 +65,9 @@ open class LBTAFormController: UIViewController {
         _ = distanceToBottom
     }
     
-    lazy var distanceToBottom = self.distanceFromLowestElementToBottom()
+    public lazy var distanceToBottom = self.distanceFromLowestElementToBottom()
 
-    func distanceFromLowestElementToBottom() -> CGFloat {
+    open func distanceFromLowestElementToBottom() -> CGFloat {
         if lowestElement != nil {
             guard let frame = lowestElement.superview?.convert(lowestElement.frame, to: view) else { return 0 }
             let distance = view.frame.height - frame.origin.y - frame.height
@@ -77,12 +77,12 @@ open class LBTAFormController: UIViewController {
         return view.frame.height - formContainerStackView.frame.maxY
     }
     
-    func setupKeyboardNotifications() {
+    open func setupKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func handleKeyboardShow(notification: Notification) {
+    @objc open func handleKeyboardShow(notification: Notification) {
         guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardFrame = value.cgRectValue
         
@@ -100,7 +100,7 @@ open class LBTAFormController: UIViewController {
         self.scrollView.scrollIndicatorInsets.bottom = keyboardFrame.height
     }
     
-    @objc func handleKeyboardHide() {
+    @objc open func handleKeyboardHide() {
         self.scrollView.contentInset.bottom = 0
         self.scrollView.scrollIndicatorInsets.bottom = 0
     }
